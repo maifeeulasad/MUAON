@@ -1,6 +1,6 @@
 # MUAON
 
-MUAON is an OBJECT notation introduced by Maifee Ul Asad, it has some similarities with JSON. But it takes less space than JSON. Although it is easily readable like JSON.
+**MUAON** is an *object notation* introduced by Maifee Ul Asad, it has some similarities with JSON. But it takes less space than JSON. Although it is easily readable like JSON.
 
 ## Motivation behind devloping MUAON
 
