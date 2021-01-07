@@ -12,13 +12,13 @@ Share extensive ammount of simmilar data.
 MUAON 				: '{' DEF_BLOCK DATA_BLOCK '}';
 
 DEF_BLOCK 			: 'def' '=' '[' ']'
-         			  | 'def' '=' '[' DEF_SET ']';
+         			| 'def' '=' '[' DEF_SET ']';
 
 DEF_SET 			: DEF
-              		| DEF_SET ',' DEF;
+              		        | DEF_SET ',' DEF;
 
 DEF     			: integer '(' ')'
-                	| integer '(' KEY_SET ')';
+                	        | integer '(' KEY_SET ')';
 
 KEY 				: KEYELEM+;
 
@@ -30,11 +30,11 @@ KEY_SET 			: KEY
 DATA_BLOCK 			: 'data' '=' VALUE;
 
 VALUE 				: STRING 
-					| OBJECT 
-					| ARRAY 
-					| bool
-					| integer 
-					| float;
+				| OBJECT 
+				| ARRAY 
+				| bool
+				| integer 
+				| float;
 
 bool 				: 'true' | 'false';
 
@@ -42,36 +42,36 @@ OBJECT 				: '{' '}'
         			| '{' ',' VALUE_SET_OBJECT '}'
         			| '{' integer ',' VALUE_SET_OBJECT '}';
 
-VALUE_SET_OBJECT    : VALUE
-                	| VALUE_SET_OBJECT ',' VALUE
-                	| VALUE_SET_OBJECT ',';
+VALUE_SET_OBJECT    		: VALUE
+                		| VALUE_SET_OBJECT ',' VALUE
+                		| VALUE_SET_OBJECT ',';
 
 ARRAY 				: '[' ']'
       				| '[' integer ',' VALUE_SET_ARRAY ']'
      				| '[' '$' ',' VALUE_SET_ARRAY ']';
 
-VALUE_SET_ARRAY 	: VALUE
-            		| VALUE_SET_ARRAY ',' VALUE;
+VALUE_SET_ARRAY 		: VALUE
+            			| VALUE_SET_ARRAY ',' VALUE;
 
 
 
 integer 			: '-'? DIGIT+;
 
 float 				: '-' ? integer ( ('.' DIGIT+ EXPONENT?) | (EXPONENT));
-fragment EXPONENT 	: [eE] [-+]? integer+;
-fragment DIGIT 		: '0'..'9';
+EXPONENT 			: [eE] [-+]? integer+;
+DIGIT 				: '0'..'9';
 
 
 
 KEYELEM 			: [0-9a-zA-Z];
 
 STRING 				: '"' (~["\\] | ESCAPE)* '"';
-fragment ESCAPE 	: '\\' ( ["\\/bfnrt]| UNICODE) ;
-fragment UNICODE 	: 'u' HEXADECIMAL HEXADECIMAL HEXADECIMAL HEXADECIMAL;
-fragment HEXADECIMAL: [0-9a-fA-F];
+ESCAPE 				: '\\' ( ["\\/bfnrt]| UNICODE) ;
+UNICODE 			: 'u' HEXADECIMAL HEXADECIMAL HEXADECIMAL HEXADECIMAL;
+HEXADECIMAL			: [0-9a-fA-F];
 
-WhiteSpace 			: [\r\n\t ]+ -> skip;
-MultiLineComments 	: '/*' .*? '*/' -> skip;
+WHITE_SPACE 			: [\r\n\t ]+ -> skip;
+MULTI_COMMENTS 			: '/*' .*? '*/' -> skip;
 
 ```
 
